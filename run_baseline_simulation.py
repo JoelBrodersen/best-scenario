@@ -24,7 +24,7 @@ def create_sumo_config(sim_start=0, sim_end=86400,seed=0, eval_start=0, eval_end
 
     # Output section
     output_elem = ET.SubElement(root, 'output')
-    ET.SubElement(output_elem, 'output-prefix', value=f'../output/berlin_s_{seed}_baseline_{sim_start}_{sim_end}_')
+    ET.SubElement(output_elem, 'output-prefix', value=f'../output/berlin_s_{seed}_baseline_{eval_start}_{eval_end}_')
     ET.SubElement(output_elem, 'log', value='console.log')
     ET.SubElement(output_elem, 'summary-output', value='summary.xml')
     ET.SubElement(output_elem, 'statistic-output', value='statistics.xml')
@@ -75,8 +75,8 @@ def create_edge_data_additional(
     period=3600,
     with_internal=True,
     exclude_empty=True,
-    min_samples=2,
-    track_vehicles=True,
+    min_samples=1,
+    track_vehicles=False,
 ):
     # Root element
     additional = ET.Element("additional")
@@ -86,7 +86,7 @@ def create_edge_data_additional(
     edge_data.set("id", f"edgedata_s_{seed}_{eval_start}_{eval_end}")
     edge_data.set("begin", str(eval_start))
     edge_data.set("end", str(eval_end))
-    edge_data.set("file", f"berlin_s_{seed}_{eval_start}_{eval_end}_baseline_edgedata.xml")
+    edge_data.set("file", "edgedata.xml")
     edge_data.set("period", str(period))
     edge_data.set("withInternal", str(with_internal).lower())
     edge_data.set("excludeEmpty", str(exclude_empty).lower())
@@ -154,7 +154,7 @@ if __name__ == "__main__":
     parser.add_argument('--s', '--seeds', type=lambda s: [int(item) for item in s.split(',')], default=[0], help='Seeds for simulation (comma-separated, e.g., 0,1,2)')
     parser.add_argument('--evaluation_interval', type=int, default=3600, help='Interval Length [seconds]')
     parser.add_argument("--warmup_time", type=int, default=3600, help="Warmup time in seconds")
-    parser.add_argument("--cooldown_time", type=int, default=0, help="Cooldown time in seconds")
+    parser.add_argument("--cooldown_time", type=int, default=20, help="Cooldown time in seconds")
     parser.add_argument('--processes', type=int, default=4, help='Number of parallel processes to run simulations')
     parser.add_argument('--simulate', type=int, default=True, help='Whether to run the simulations after creating config files (1 for True, 0 for False)')
 
