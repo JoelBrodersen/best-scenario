@@ -156,6 +156,7 @@ if __name__ == "__main__":
     parser.add_argument("--warmup_time", type=int, default=3600, help="Warmup time in seconds")
     parser.add_argument("--cooldown_time", type=int, default=0, help="Cooldown time in seconds")
     parser.add_argument('--processes', type=int, default=4, help='Number of parallel processes to run simulations')
+    parser.add_argument('--simulate', type=int, default=True, help='Whether to run the simulations after creating config files (1 for True, 0 for False)')
 
     args = parser.parse_args()
     
@@ -171,9 +172,10 @@ if __name__ == "__main__":
             create_edge_data_additional(seed=seed, eval_start=eval_start, eval_end=eval_end,period=args.evaluation_interval)
 
 
-
-    results = run_sumo_configs_parallel(sumo_cfg_paths, n_processes=args.processes)
-    for cfg_path, return_code in results:
-        if return_code != 0:
-            print(f"Simulation failed for config: {cfg_path}")
-    
+    if args.simulate:
+        results = run_sumo_configs_parallel(sumo_cfg_paths, n_processes=args.processes)
+        for cfg_path, return_code in results:
+            if return_code != 0:
+                print(f"Simulation failed for config: {cfg_path}")
+    else:
+        print("Simulation skipped as per user request.")
