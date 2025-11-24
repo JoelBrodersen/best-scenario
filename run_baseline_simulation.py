@@ -35,8 +35,8 @@ def create_sumo_config(sim_start=0, sim_end=86400,seed=0, eval_start=0, eval_end
 
     # Time section
     time_elem = ET.SubElement(root, 'time')
-    ET.SubElement(time_elem, 'begin', value='21600')
-    ET.SubElement(time_elem, 'end', value='86400.0')
+    ET.SubElement(time_elem, 'begin', value=str(sim_start))
+    ET.SubElement(time_elem, 'end', value=str(sim_end))
 
     # Processing section
     processing_elem = ET.SubElement(root, 'processing')
@@ -49,8 +49,7 @@ def create_sumo_config(sim_start=0, sim_end=86400,seed=0, eval_start=0, eval_end
 
     # Random number section
     random_elem = ET.SubElement(root, 'random_number')
-    ET.SubElement(random_elem, 'random', value='false')
-    ET.SubElement(random_elem, 'seed', value='251920')
+    ET.SubElement(random_elem, 'seed', value=str(seed))
 
     # Create XML tree and add declaration/comment
     tree = ET.ElementTree(root)
