@@ -98,7 +98,7 @@ def create_edge_data_additional(
     tree.write(output_path, encoding="utf-8", xml_declaration=True)
 
 
-    def run_sumo_simulation(cfg_path):
+def run_sumo_simulation(cfg_path):
         """
         Run a single SUMO simulation given a configuration file path.
         
@@ -122,7 +122,7 @@ def create_edge_data_additional(
             return (cfg_path, -1)
 
 
-    def run_sumo_configs_parallel(cfg_paths, n_processes=4):
+def run_sumo_configs_parallel(cfg_paths, n_processes=4):
         """
         Run multiple SUMO configuration files in parallel.
         
