@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
+<additional>
+    <edgeData id="edgedata_s_0_82800_86400" begin="82800" end="86400" file="berlin_s_0_82800_86400_baseline_edgedata.xml" period="3600" withInternal="true" excludeEmpty="true" minSamples="2" trackVehicles="true" />
+</additional>

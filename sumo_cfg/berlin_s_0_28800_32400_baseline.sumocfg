@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+    <input>
+        <net-file value="../berlin.net.xml.gz"/>
+        <route-files value="../berlin_s_0.rou.gz"/>
+        <additional-files value="../edge_data_cfg/berlin_s_0_28800_32400_baseline_edgedata_cfg.add.xml"/>
+    </input>
+    <output>
+        <output-prefix value="../output/berlin_s_0_baseline_25200_32400_"/>
+        <log value="console.log"/>
+        <summary-output value="summary.xml"/>
+        <statistic-output value="statistics.xml"/>
+        <vehroute-output value="vehroute.xml.gz"/>
+        <vehroute-output.route-length value="true"/>
+        <stop-output value="stop.xml.gz"/>
+        <tripinfo-output value="tripinfo.xml.gz"/>
+    </output>
+    <time>
+        <begin value="21600"/>
+        <end value="86400.0"/>
+    </time>
+    <processing>
+        <route-steps value="200"/>
+        <no-internal-links value="false"/>
+        <ignore-junction-blocker value="20"/>
+        <time-to-teleport value="120.0"/>
+        <time-to-teleport.highways value="0"/>
+        <eager-insert value="false"/>
+    </processing>
+    <random_number>
+        <random value="false"/>
+        <seed value="251920"/>
+    </random_number>
+</configuration>
