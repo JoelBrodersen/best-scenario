@@ -95,7 +95,6 @@ def create_edge_data_additional(
     output_path = py_path.parent/"edge_data_cfg"/ f"berlin_s_{seed}_{eval_start}_{eval_end}_baseline_edgedata_cfg.add.xml"
     # Write to file (pretty print)
     tree = ET.ElementTree(additional)
-    ET.indent(tree, space="    ")
     tree.write(output_path, encoding="utf-8", xml_declaration=True)
 
 
